@@ -46,6 +46,7 @@
 		4EDCB99A29C711F7004967FA /* ComediansInCarsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComediansInCarsUITests.swift; sourceTree = "<group>"; };
 		4EDCB99C29C711F7004967FA /* ComediansInCarsUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComediansInCarsUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		4EDCB9A929C71510004967FA /* ApiManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiManager.swift; sourceTree = "<group>"; };
+		4EE942B729C90A72004E9E95 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +97,7 @@
 		4EDCB97E29C711F5004967FA /* ComediansInCars */ = {
 			isa = PBXGroup;
 			children = (
+				4EE942B729C90A72004E9E95 /* Info.plist */,
 				4EDCB97F29C711F5004967FA /* ComediansInCarsApp.swift */,
 				4EDCB9A929C71510004967FA /* ApiManager.swift */,
 				4EDCB98129C711F5004967FA /* ContentView.swift */,
@@ -421,8 +423,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"ComediansInCars/Preview Content\"";
+				DEVELOPMENT_TEAM = V57X4W4R38;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ComediansInCars/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -449,8 +453,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"ComediansInCars/Preview Content\"";
+				DEVELOPMENT_TEAM = V57X4W4R38;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ComediansInCars/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

@@ -39,7 +39,7 @@ struct APIResponse<T: Codable>: Codable {
 }
 
 class APIManager {
-    let base_url = "http://127.0.0.1:8000/"
+    let base_url = "http://ec2-13-48-124-232.eu-north-1.compute.amazonaws.com:8000/"
     func login(user: String, password: String, completion: @escaping (Result<LoginResponse, Error>) -> Void) {
         let url = URL(string: base_url + "login?user=\(user)&password=\(password)")!
 
