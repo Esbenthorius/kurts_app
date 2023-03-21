@@ -1,6 +1,5 @@
 import SwiftUI
 
-
 struct ContentView: View {
     @State private var user = ""
     @State private var password = ""
@@ -10,11 +9,16 @@ struct ContentView: View {
     @State private var showProfile = false
     @State private var loggedIn = false
     let apiManager = APIManager()
-
     
     var body: some View {
         NavigationView {
             VStack {
+                Image("FullSizeRender")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: 350, height: 350)
+                    .padding(.bottom, 20)
+                
                 TextField("Username", text: $user)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                     .padding(.horizontal)
@@ -45,6 +49,7 @@ struct ContentView: View {
                     }
                 }
                 .padding()
+                .buttonStyle(FilledButton())
                 
                 
                 Button("Don't have an account? Create one") {
@@ -80,7 +85,19 @@ struct ContentView: View {
                 Alert(title: Text("Login Failed"), message: Text("Wrong email or password"), dismissButton: .default(Text("OK")))
             }
             .navigationTitle("Login")
+            .padding(.top, 30)
         }
+    }
+}
+
+struct FilledButton: ButtonStyle {
+    func makeBody(configuration: Configuration) -> some View {
+        configuration.label
+            .foregroundColor(.white)
+            .padding()
+            .background(Color.blue)
+            .cornerRadius(10)
+            .scaleEffect(configuration.isPressed ? 0.95 : 1.0)
     }
 }
 
@@ -91,7 +108,9 @@ struct AddFriendView: View {
     
     var body: some View {
         VStack {
-            TextField("Comdian's username", text: $friendUsername)
+            Spacer()
+            
+            TextField("Comedian's username", text: $friendUsername)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 .padding(.horizontal)
                 .autocapitalization(.none)
@@ -107,8 +126,12 @@ struct AddFriendView: View {
             }
             .disabled(friendUsername.isEmpty)
             .padding()
+            .buttonStyle(FilledButton())
+            
+            Spacer()
         }
         .navigationTitle("Add Friend")
+        .padding(.top, 30)
     }
 }
 
@@ -124,9 +147,12 @@ struct ProfileView: View {
             Spacer()
 
             Text("Hej Komiker \(user)")
+                .font(.largeTitle)
+                .bold()
+                .padding()
 
             HStack {
-                TextField("Comdians Username", text: $friendUsername)
+                TextField("Comedian's Username", text: $friendUsername)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                     .padding(.horizontal)
 
@@ -134,21 +160,31 @@ struct ProfileView: View {
                     addFriend()
                 }
                 .padding(.horizontal)
+                .buttonStyle(FilledButton())
             }
 
             Spacer()
 
-            Toggle("Ja du kan ringe til mig", isOn: $isFeatureOn)
-                setActivity()
+            Toggle("Ja, du kan ringe til mig", isOn: $isFeatureOn)
+                .onChange(of: isFeatureOn, perform: { value in
+                    setActivity()
+                })
                 .toggleStyle(SwitchToggleStyle(tint: isFeatureOn ? Color.green : Color.red))
                 .padding()
 
             Spacer()
 
             List(friends, id: \.name) { friend in
-                VStack(alignment: .leading) {
-                    Text(friend.name)
-                    Text(friend.active ? "Active" : "Inactive")
+                HStack {
+                    VStack(alignment: .leading) {
+                        Text(friend.name)
+                            .font(.headline)
+                        Text(friend.active ? "Active" : "Inactive")
+                            .font(.subheadline)
+                            .foregroundColor(friend.active ? .green : .red)
+                    }
+                    Spacer()
+                    Image(systemName: "person.fill")
                         .foregroundColor(friend.active ? .green : .red)
                 }
             }
@@ -162,6 +198,7 @@ struct ProfileView: View {
                 }
             }
         }
+        .padding(.top, 30)
     }
 
     private func addFriend() {
